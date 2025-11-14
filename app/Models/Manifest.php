@@ -24,7 +24,7 @@ class Manifest extends Model
     }
     public function receiveraddress()
     {
-        return $this->belongsTo(ReceiverAddress::class);
+        return $this->belongsTo(Receiveraddress::class);
     }
     
 }
