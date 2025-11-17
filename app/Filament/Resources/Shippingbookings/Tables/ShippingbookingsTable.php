@@ -2,18 +2,20 @@
 
 namespace App\Filament\Resources\Shippingbookings\Tables;
 
+use Filament\Tables\Table;
+use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ShippingbookingsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
+              ->modifyQueryUsing(fn (Builder $query) => $query->where('assign_to', false))
             ->columns([
                TextColumn::make( 'booking_no' )
                 ->label( 'Booking Number' )
