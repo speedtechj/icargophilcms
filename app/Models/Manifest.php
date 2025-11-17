@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Manifest extends Model
 {
      protected $table = 'bookings';
+      protected $guarded = [];
       public function boxtype()
     {
-        return $this->belongsTo(Boxtype::class);
+        return $this->belongsTo(Boxtype::class, 'boxtype_id');
     }
      public function batch(){
         return $this->belongsTo(Batch::class);

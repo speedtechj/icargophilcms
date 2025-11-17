@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sender extends Model
 {
-    //
+    protected $table = 'senders';
+    protected $guarded = [];
+
+   
 }

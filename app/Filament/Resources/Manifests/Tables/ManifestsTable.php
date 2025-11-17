@@ -5,19 +5,28 @@ namespace App\Filament\Resources\Manifests\Tables;
 use App\Models\Batch;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ExportBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Exports\ManifestExporter;
+use Filament\Actions\Exports\Models\Export;
 
 class ManifestsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
+           
+        //     ->headerActions([
+        //     ExportAction::make()
+        //         ->exporter(ManifestExporter::class),
+        // ])
             ->columns([
                 TextColumn::make('invoice')
                     ->label('Invoice')
@@ -82,6 +91,9 @@ class ManifestsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
+                    ExportBulkAction::make()
+                ->exporter(ManifestExporter::class)
+                 ->fileName(fn (Export $export): string => "Manifests"),
                     // DeleteBulkAction::make(),
                 ]),
             ]);
