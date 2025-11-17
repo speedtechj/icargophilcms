@@ -81,7 +81,7 @@ class ManifestsTable
             ])
             ->filters([
                 SelectFilter::make('batch_id')
-                    ->preload()
+                  //  ->preload()
                     ->searchable()
                     ->relationship('batch', 
                     titleAttribute: 'id',
