@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('/')
             ->login()
+            // ->profile()
             ->databaseNotifications()
             ->brandName('iCargoPH CMS')
             ->colors([

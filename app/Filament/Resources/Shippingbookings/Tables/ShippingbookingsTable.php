@@ -15,53 +15,30 @@ class ShippingbookingsTable
     {
         return $table
             ->columns([
-                TextColumn::make('shippingagent_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('booking_date')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('booking_no')
-                    ->searchable(),
-                TextColumn::make('carrier_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('vessel')
-                    ->searchable(),
-                TextColumn::make('return_terminal')
-                    ->searchable(),
-                TextColumn::make('origin_terminal')
-                    ->searchable(),
-                TextColumn::make('port_of_loading')
-                    ->searchable(),
-                TextColumn::make('port_of_unloading')
-                    ->searchable(),
-                TextColumn::make('etd')
-                    ->date()
-                    ->sortable(),
+               TextColumn::make( 'booking_no' )
+                ->label( 'Booking Number' )
+                ->searchable(),
+                TextColumn::make( 'shippingcontainer.container_no' )
+                ->label( 'Container Number' )
+                ->listWithLineBreaks()
+                ->searchable(),
+                TextColumn::make( 'shippingcontainer.seal_no' )
+                ->label( 'Seal Number' )
+                ->listWithLineBreaks()
+                ->searchable(),
+                TextColumn::make( 'carrier.name' )
+                ->label( 'Carrier' )
+                ->numeric(),
+                TextColumn::make('shippingcontainer.batch.batchno')
+                ->label('Batch No')
+                ->listWithLineBreaks()
+                ->searchable(),
+                TextColumn::make('bill_of_lading'),
                 TextColumn::make('eta')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('bill_of_lading')
-                    ->searchable(),
-                TextColumn::make('branch_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('commodity')
-                    ->searchable(),
-                TextColumn::make('hs_code')
-                    ->searchable(),
-                TextColumn::make('place_of_receipt')
-                    ->searchable(),
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                IconColumn::make('is_complete')
-                    ->boolean(),
-                IconColumn::make('assign_to')
-                    ->boolean(),
-                TextColumn::make('telex_attachments')
-                    ->searchable(),
+                ->label('ETA'),
+                TextColumn::make('branch.business_name')
+                ->label('Broker'),
+               
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -75,11 +52,11 @@ class ShippingbookingsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+              //  EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    //DeleteBulkAction::make(),
                 ]),
             ]);
     }
