@@ -18,8 +18,7 @@ class ShippingbookingResource extends Resource
 {
     protected static ?string $model = Shippingbooking::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-computer-desktop';
     protected static ?string $recordTitleAttribute = 'booking_no';
 
     public static function form(Schema $schema): Schema

@@ -17,8 +17,12 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Exports\ManifestExporter;
 use Filament\Actions\Exports\Models\Export;
 
+
 class ManifestsTable
 {
+   
+
+
     public static function configure(Table $table): Table
     {
         return $table

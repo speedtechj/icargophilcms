@@ -18,7 +18,7 @@ class ManifestResource extends Resource
 {
     protected static ?string $model = Manifest::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-queue-list';
 
     protected static ?string $recordTitleAttribute = 'booking_invoice';
 
