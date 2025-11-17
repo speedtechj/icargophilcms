@@ -85,7 +85,7 @@ class ManifestsTable
                     ->searchable()
                     ->relationship('batch', 
                     titleAttribute: 'id',
-                    modifyQueryUsing: fn (Builder $query) => $query->where('is_active', true)->where('is_lock', false))
+                    modifyQueryUsing: fn (Builder $query) => $query->where('is_active', 1)->where('is_lock', 1))
                     ->getOptionLabelFromRecordUsing(fn($record) => "{$record->batchno} - {$record->batch_year}")
                     ->searchable(),
 
