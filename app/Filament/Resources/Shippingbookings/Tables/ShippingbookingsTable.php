@@ -15,7 +15,7 @@ class ShippingbookingsTable
     public static function configure(Table $table): Table
     {
         return $table
-              ->modifyQueryUsing(fn (Builder $query) => $query->where('assign_to', false))
+              ->modifyQueryUsing(fn (Builder $query) => $query->where('assign_to', 0))
             ->columns([
                TextColumn::make( 'booking_no' )
                 ->label( 'Booking Number' )
