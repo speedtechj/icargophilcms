@@ -81,11 +81,11 @@ class ManifestsTable
             ])
             ->filters([
                 SelectFilter::make('batch_id')
-                  //  ->preload()
+                    ->preload()
                     ->searchable()
                     ->relationship('batch', 
                     titleAttribute: 'id',
-                    modifyQueryUsing: fn (Builder $query) => $query->where('is_active', true),)
+                    modifyQueryUsing: fn (Builder $query) => $query->where('is_active', true)->where('is_lock', false))
                     ->getOptionLabelFromRecordUsing(fn($record) => "{$record->batchno} - {$record->batch_year}")
                     ->searchable(),
 
