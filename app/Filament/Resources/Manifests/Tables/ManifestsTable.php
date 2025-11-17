@@ -98,6 +98,7 @@ class ManifestsTable
                 BulkActionGroup::make([
                     ExportBulkAction::make()
                 ->exporter(ManifestExporter::class)
+                ->color('primary')
                  ->fileName(fn (Export $export): string => "Manifests"),
                     // DeleteBulkAction::make(),
                 ]),
