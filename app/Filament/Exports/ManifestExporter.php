@@ -3,6 +3,7 @@
 namespace App\Filament\Exports;
 
 use App\Models\Manifest;
+use App\Models\Locationcode;
 use Illuminate\Support\Number;
 use Illuminate\Support\Facades\Log;
 use Filament\Actions\Exports\Exporter;
@@ -40,12 +41,19 @@ class ManifestExporter extends Exporter
             ->label('Address'),
             ExportColumn::make('receiveraddress.barangayphil.name')
             ->label('Barangay'),
-            ExportColumn::make('receiveraddress.provincephil.name')
-            ->label('Province'),
             ExportColumn::make('receiveraddress.cityphil.name')->label('City'),
+             ExportColumn::make('receiveraddress.provincephil.name')
+            ->label('Province'),
             ExportColumn::make('receiver.mobile_no')->label('Mobile Number'),
             ExportColumn::make('receiver.home_no')->label('Home Number'),
-            
+            ExportColumn::make('code')
+            ->label('Location code')
+             ->state(function ($state) {
+                $state = Locationcode::All()->first()->code;
+        return $state;
+    }),
+         ExportColumn::make('receiveraddress.barangayphil.zoneroute_id')
+            ->label('Route id'),
         ];
     }
     public static function getCompletedNotificationBody(Export $export): string
